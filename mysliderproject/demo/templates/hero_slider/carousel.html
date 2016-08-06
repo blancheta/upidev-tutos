@@ -1,22 +1,13 @@
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
-
     <ol class="carousel-indicators">
         {% for item in slider_items %}
-            {% if item.position == 1 %}
-             <li data-target="#myCarousel" data-slide-to="{{ item.position }}" class="active"></li>
-             {% else %}
-             <li data-target="#myCarousel" data-slide-to="{{ item.position }}"></li>
-             {% endif %}
+            <li data-target="#myCarousel" data-slide-to="{{ item.position }}" class=" {% if item.position == 1 %}{{ 'active' }}{% endif %}"></li>
         {% endfor %}
     </ol>
 
     <div class="carousel-inner" role="list-box">
         {% for item in slider_items %}
-            {% if item.position == 1 %}
-            <div class="item active">
-            {% else %}
-            <div class="item">
-            {% endif %}
+            <div class="item {% if item.position == 1 %}{{ 'active' }}{% endif %}">
                 <a href="{{ item.get_item_url }}">
                     <img src="{{ item.image.url }}" alt="" />
                     <div class="carousel-caption">
